@@ -39,7 +39,7 @@ function renderPackages() {
           <div>
             ${pkg.offerTitle ? `<div class=\"package-offer-title\">${pkg.offerTitle}</div>` : ''}
             <div class="package-title">${pkg.name}
-              ${pkg.bestSeller ? '<span class=\"package-badge\">Best Seller</span>' : ''}
+              ${pkg.bestSeller ? '<span class="package-badge glitter-badge">Best Seller</span>' : ''}
             </div>
             ${pkg.features ? `<ul class=\"package-features\">${pkg.features.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
           </div>

@@ -215,7 +215,7 @@ main {
   justify-content: space-between;
 }
 .package-badge {
-  background: #a259ff;
+  background: #8b6db1;
   color: #fff;
   font-size: 0.78rem;
   font-weight: 600;
@@ -227,6 +227,23 @@ main {
   animation: none;
   position: relative;
   right: 0;
+}
+.package-badge.glitter-badge {
+  position: relative;
+  background: linear-gradient(120deg, #8b6db1 40%, #fffbe6 50%, #8b6db1 60%);
+  background-size: 200% 100%;
+  animation: glitter 3s linear infinite;
+  color: #fff;
+  /* box-shadow: 0 0 8px #a259ff, 0 0 18px #fffbe6; */
+  filter: brightness(1.15);
+}
+@keyframes glitter {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 @keyframes neon-glow {
   0% {
