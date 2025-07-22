@@ -45,8 +45,8 @@
     },
     {
       "name": "Party Makeup",
-      "bestSeller": false,
-      "offerTitle": "",
+      "bestSeller": true,
+      "offerTitle": "Limited Time Offer!",
       "actualPrice": "₹8,000",
       "offerPrice": "₹6,500",
       "features": [

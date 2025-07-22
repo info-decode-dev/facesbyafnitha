@@ -27,7 +27,12 @@ function renderHeader() {
 function renderPackages() {
   const pkgGrid = document.getElementById('packages');
   pkgGrid.innerHTML = "";
-  SITE_DATA.packages.forEach((pkg, i) => {
+  const filteredPackages = filterPackages(SITE_DATA.packages);
+  if (filteredPackages.length === 0) {
+    pkgGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#b59f7b;font-size:1.1em;">No packages found.</div>';
+    return;
+  }
+  filteredPackages.forEach((pkg, i) => {
     // Use a placeholder or cycle through portfolio images for now
     const imgSrc = SITE_DATA.portfolio[i % SITE_DATA.portfolio.length] || 'assets/p1.jpg';
     pkgGrid.innerHTML += `
@@ -183,6 +188,51 @@ packageForm.onsubmit = (e) => {
   const whatsappURL = `https://wa.me/${phoneNum}?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
 };
+
+// --------- FILTER LOGIC ---------
+function getFilterValues() {
+  return {
+    name: document.getElementById('filterName').value.trim().toLowerCase(),
+    price: document.getElementById('filterPrice').value,
+    feature: document.getElementById('filterFeature').value.trim().toLowerCase(),
+    bestSeller: document.getElementById('filterBestSeller').checked
+  };
+}
+
+function filterPackages(packages) {
+  const { name, price, feature, bestSeller } = getFilterValues();
+  return packages.filter(pkg => {
+    // Name filter
+    if (name && !pkg.name.toLowerCase().includes(name)) return false;
+    // Price filter
+    if (price) {
+      // Remove non-digits for price comparison
+      const offerPrice = parseInt(pkg.offerPrice.replace(/[^0-9]/g, ''));
+      if (price === 'lt10000' && !(offerPrice < 10000)) return false;
+      if (price === '10000-20000' && !(offerPrice >= 10000 && offerPrice <= 20000)) return false;
+      if (price === '20000-30000' && !(offerPrice > 20000 && offerPrice <= 30000)) return false;
+      if (price === 'gt30000' && !(offerPrice > 30000)) return false;
+    }
+    // Feature filter
+    if (feature) {
+      const features = (pkg.features || []).map(f => f.toLowerCase());
+      if (!features.some(f => f.includes(feature))) return false;
+    }
+    // Best seller filter
+    if (bestSeller && !pkg.bestSeller) return false;
+    return true;
+  });
+}
+
+// Listen for filter changes
+window.addEventListener('DOMContentLoaded', function() {
+  const filterForm = document.getElementById('packageFilterForm');
+  if (filterForm) {
+    filterForm.addEventListener('input', () => {
+      renderPackages();
+    });
+  }
+});
 
 // INITIAL RENDER
 fetchSiteData();

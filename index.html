@@ -28,6 +28,20 @@
     <main>
       <section class="pricing-section" aria-label="Bridal Packages">
         <h2>Bridal Packages</h2>
+        <form id="packageFilterForm" class="package-filter-form">
+          <input type="text" id="filterName" placeholder="Search by name" />
+          <select id="filterPrice">
+            <option value="">All Prices</option>
+            <option value="lt10000">Below ₹10,000</option>
+            <option value="10000-20000">₹10,000 - ₹20,000</option>
+            <option value="20000-30000">₹20,000 - ₹30,000</option>
+            <option value="gt30000">Above ₹30,000</option>
+          </select>
+          <input type="text" id="filterFeature" placeholder="Feature (e.g. Airbrush)" />
+          <label>
+            <input type="checkbox" id="filterBestSeller" /> Best Seller
+          </label>
+        </form>
         <div id="packages" class="packages-grid"></div>
       </section>
       <section class="portfolio-section" aria-label="Portfolio">

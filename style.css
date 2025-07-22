@@ -659,6 +659,79 @@ main {
   }
 }
 
+/* --- Filter Form Styles --- */
+.package-filter-form {
+  background: linear-gradient(90deg, #fffaf6 60%, #f9f7f3 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(181,159,123,0.08), 0 1.5px 5px rgba(44, 62, 80, 0.04);
+  padding: 1.1em 1.5em 1.1em 1.5em;
+  margin-bottom: 2.2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1em 1.5em;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ececec;
+}
+.package-filter-form input[type="text"],
+.package-filter-form select {
+  font-family: var(--font-main);
+  font-size: 1.01rem;
+  padding: 0.6em 1.1em;
+  border-radius: 8px;
+  border: 1.5px solid #e5e0d8;
+  background: #fff;
+  color: #222;
+  min-width: 160px;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(181,159,123,0.04);
+}
+.package-filter-form input[type="text"]:focus,
+.package-filter-form select:focus {
+  border: 1.5px solid var(--primary);
+  outline: none;
+  box-shadow: 0 2px 8px rgba(181,159,123,0.10);
+}
+.package-filter-form select {
+  min-width: 120px;
+}
+.package-filter-form label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.01em;
+  color: var(--primary);
+  font-weight: 600;
+  background: #f8f6ff;
+  border-radius: 8px;
+  padding: 0.4em 1em;
+  margin: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.package-filter-form label:hover {
+  background: #f3eaff;
+}
+.package-filter-form input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.2em;
+}
+@media (max-width: 900px) {
+  .package-filter-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+    padding: 1em 0.7em;
+  }
+  .package-filter-form input[type="text"],
+  .package-filter-form select {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
 @media (max-width: 900px) {
   .portfolio-grid { grid-template-columns: 1fr 1fr; }
   main { max-width: 98vw; }
