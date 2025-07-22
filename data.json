@@ -29,7 +29,8 @@
         "Draping",
         "Lashes",
         "Touch-up Kit"
-      ]
+      ],
+      "recommended": false
     },
     {
       "name": "Engagement Glam",
@@ -41,7 +42,8 @@
         "HD Makeup",
         "Simple Hair Styling",
         "Lashes"
-      ]
+      ],
+      "recommended": false
     },
     {
       "name": "Party Makeup",
